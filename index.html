@@ -36,7 +36,7 @@
 				data.forEach(message => {
 					const messageElement = document.createElement('div');
 					const date_sent = new Date(message.date_sent).toLocaleString();
-					messageElement.textContent = `${date_sent} - ${message.sender_id}: ${message.text}`;
+					messageElement.textContent = `${date_sent} - ${message.sender.username}: ${message.text}`;
 					messagesDiv.appendChild(messageElement);
 				});
 			})
@@ -44,9 +44,15 @@
 				console.error('Error:', error);
 			});
 
-		ws = new WebSocket("ws://localhost:8080/ws/messages?uid=8ba8fddc-c2ea-440a-b6a6-9ae3a09ce483");
+		ws = new WebSocket("ws://localhost:8080/ws/messages?uid=85b0fcd7-6c15-4a49-bac5-d59a74a675c4");
 		ws.onmessage = function (event) {
 			console.log("WebSocket message received:", event.data);
+
+			const message = JSON.parse(event.data);
+			const messageElement = document.createElement('div');
+			const date_sent = new Date(message.date_sent).toLocaleString();
+			messageElement.textContent = `${date_sent} - ${message.sender.username}: ${message.text}`;
+			messagesDiv.appendChild(messageElement);
 		};
 
 		ws.onopen = function () {
@@ -62,8 +68,8 @@
 	sendButton.addEventListener('click', () => {
 		const userInput = document.getElementById('user_input');
 		const message = {
-			sender_id: "67138182-5323-4cf0-9731-615153189832",
-			recipient_id: "ca983c19-74d9-445e-8912-dd09bf1e302b",
+			sender: { id: "85b0fcd7-6c15-4a49-bac5-d59a74a675c4" },
+			tab: { id: "15378972-c26f-43b2-a20c-0c4d43d9f7dc" },
 			text: userInput.value,
 			date_sent: new Date()
 		}
