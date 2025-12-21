@@ -1,1 +1,2 @@
 * text=auto eol=lf
+*.env filter=git-crypt diff=git-crypt

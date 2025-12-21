@@ -1,13 +1,10 @@
 <script setup lang="ts">
+import Server from './components/Server.vue';
 
 </script>
 
 <template>
-  <h1 ref="title" class="text-amber-300">You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <Server server_id="a1084b2b-60ce-4209-89bd-fb426938ae50" />
 </template>
 
 <style scoped></style>
