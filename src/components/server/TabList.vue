@@ -6,25 +6,27 @@ import { GetTabsByServerId } from '@/services/server';
 
 type Props = {
 	server_id: string
-}
-const props = defineProps<Props>()
+};
+const props = defineProps<Props>();
 
-let tabs = ref<Tab_t[] | null>(null)
+const tabs = ref<Tab_t[] | null>(null);
 
-const fetchUsers = async () => {
-	const us = await GetTabsByServerId(props.server_id)
-	console.log('Fetched tabs:', us)
-	tabs.value = us
-}
+const fetchUsers = async() => {
+	const us = await GetTabsByServerId(props.server_id);
+	console.log(`Fetched tabs:`, us);
+	tabs.value = us;
+};
 
-fetchUsers()
+fetchUsers();
 
 </script>
 
 <template>
 	<div class="bg-green-400 w-full flex flex-col px-3 pt-1">
-		<div v-if="tabs" v-for="tab in tabs" :key="tab.id">
-			<Tab :tab="tab" />
+		<div v-if="tabs">
+			<div v-for="tab in tabs" :key="tab.id">
+				<Tab :tab="tab" />
+			</div>
 		</div>
 	</div>
 </template>

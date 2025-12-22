@@ -3,8 +3,8 @@ import type User from '@/types/user';
 
 type Props = {
 	user: User
-}
-const props = defineProps<Props>()
+};
+const props = defineProps<Props>();
 
 </script>
 <template>

@@ -13,7 +13,7 @@ import stylisticPlugin from '@stylistic/eslint-plugin';
 export default defineConfigWithVueTs(
 	{
 		name  : `app/files-to-lint`,
-		files : [ `**/*.{ts,mts,tsx,vue}` ],
+		files : [ `src/**/*.{ts,mts,tsx,vue}` ],
 	},
 
 	globalIgnores([ `**/dist/**`, `**/dist-ssr/**`, `**/coverage/**` ]),
@@ -27,6 +27,7 @@ export default defineConfigWithVueTs(
 			'@stylistic'                  : stylisticPlugin,
 		},
 		rules: {
+			"vue/multi-word-component-names"                          : `off`,
 			"file-extension-in-import-ts/file-extension-in-import-ts" : `error`,
 			"@typescript-eslint/no-explicit-any"                      : `warn`,
 			"@typescript-eslint/no-unused-vars"                       : [
@@ -44,6 +45,7 @@ export default defineConfigWithVueTs(
 						`snake_case`,
 						`camelCase`,
 						`UPPER_CASE`,
+						`PascalCase`,
 					],
 					leadingUnderscore  : `allow`,
 					trailingUnderscore : `allow`,

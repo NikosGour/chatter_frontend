@@ -6,23 +6,25 @@ import { GetUsersByServerId } from '@/services/server';
 
 type Props = {
 	server_id: string
-}
-const props = defineProps<Props>()
+};
+const props = defineProps<Props>();
 
-let users = ref<User_t[] | null>(null)
+const users = ref<User_t[] | null>(null);
 
-const fetchUsers = async () => {
-	const us = await GetUsersByServerId(props.server_id)
-	console.log('Fetched users:', us)
-	users.value = us
-}
+const fetchUsers = async() => {
+	const us = await GetUsersByServerId(props.server_id);
+	console.log(`Fetched users:`, us);
+	users.value = us;
+};
 
-fetchUsers()
+fetchUsers();
 </script>
 <template>
 	<div class="bg-amber-400 w-full flex flex-col px-3 pt-1">
-		<div v-if="users" v-for="user in users" :key="user.id">
-			<User :user="user" />
+		<div v-if="users">
+			<div  v-for="user in users" :key="user.id">
+				<User :user="user" />
+			</div>
 		</div>
 	</div>
 </template>

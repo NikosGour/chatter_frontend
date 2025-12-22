@@ -4,8 +4,8 @@ import type Tab from '@/types/tab';
 
 type Props = {
 	tab: Tab
-}
-const props = defineProps<Props>()
+};
+const props = defineProps<Props>();
 </script>
 
 <template>
