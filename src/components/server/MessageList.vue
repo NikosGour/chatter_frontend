@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import { GetMessagesByTabId } from '@/services/message';
 import type Message_t from '@/types/message';
-import { getCookie } from '@/utils/cookies';
 import { inject, ref, watch, type Ref } from 'vue';
 import Message from './Message.vue';
 import type Tab_t from '@/types/tab';
 import { sleep } from '@/utils/sleep';
 
-
-type Props = {
-	server_id: string
-};
-const props = defineProps<Props>();
 
 const messages = ref<Message_t[] | null | `no-messages`>(null);
 
@@ -53,13 +47,13 @@ else {
 </script>
 
 <template>
-	<div v-if="messages=='no-messages'" class="flex items-center justify-center h-full">
-		<p class="tex-8xl bg-red-700">No messages available</p>
-	</div>
-	<div v-else-if="messages" v-for="message in messages" :key="message.id" class="flex flex-col items-end p-3">
-		<Message :message="message"/>
-	</div>
-	<div v-else class="flex items-center justify-center h-full">
-		<p class="tex-8xl bg-red-700">Loading</p>
-	</div>
+<div v-if="messages=='no-messages'" class="flex items-center justify-center h-full">
+	<p class="tex-8xl bg-red-700">No messages available</p>
+</div>
+<div v-else-if="messages" v-for="message in messages" :key="message.id" class="flex flex-col items-end p-3 grow">
+	<Message :message="message"/>
+</div>
+<div v-else class="flex items-center justify-center h-full">
+	<p class="tex-8xl bg-red-700">Loading</p>
+</div>
 </template>

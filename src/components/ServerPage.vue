@@ -3,7 +3,7 @@ import type Server from '@/types/server';
 import Main from './server/Main.vue';
 import TabList from './server/TabList.vue';
 import UserList from './server/UserList.vue';
-import { provide, ref, watch } from 'vue';
+import { provide, ref } from 'vue';
 import { GetServerById } from '@/services/server';
 import type Tab_t from '@/types/tab';
 
