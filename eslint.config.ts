@@ -28,6 +28,7 @@ export default defineConfigWithVueTs(
 		},
 		rules: {
 			"vue/multi-word-component-names"                          : `off`,
+			"vue/no-use-v-if-with-v-for"                              : `off`,
 			"file-extension-in-import-ts/file-extension-in-import-ts" : `error`,
 			"@typescript-eslint/no-explicit-any"                      : `warn`,
 			"@typescript-eslint/no-unused-vars"                       : [

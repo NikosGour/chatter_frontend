@@ -8,6 +8,11 @@ export function GetAllServers(): Promise<Server[]>{
 		.then((res) => { return res.json(); });
 }
 
+export function GetServerById(server_id: string): Promise<Server>{
+	return fetch(`${backend_url}/server/${server_id}`)
+		.then((res) => { return res.json(); });
+}
+
 export function GetUsersByServerId(server_id: string): Promise<User[]>{
 	return fetch(`${backend_url}/server/${server_id}/users`)
 		.then((res) => { return res.json(); });

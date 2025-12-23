@@ -21,11 +21,9 @@ fetchUsers();
 </script>
 <template>
 	<div class="bg-amber-400 w-full flex flex-col px-3 pt-1">
-		<div v-if="users">
-			<div  v-for="user in users" :key="user.id">
+			<div  v-if="users" v-for="user in users" :key="user.id">
 				<User :user="user" />
 			</div>
-		</div>
 	</div>
 </template>
 
