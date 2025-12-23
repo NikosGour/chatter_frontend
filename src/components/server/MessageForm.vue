@@ -6,13 +6,16 @@ const text_box = ref<InstanceType<typeof InputText> & { $el: HTMLInputElement } 
 const message = ref(``);
 const send = () => {
 	console.log(`sent message`, message.value);
-
 };
 
 const handleKeyPress = (e:KeyboardEvent) => {
-	console.log(`n`, text_box.value!.$el.nodeName, e);
-	if (document.activeElement != text_box.value!.$el){
-		text_box.value!.$el.focus();
+	if (e.key === `Enter`){
+		send();
+	}
+	else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey){
+		if (document.activeElement != text_box.value!.$el){
+			text_box.value!.$el.focus();
+		}
 	}
 };
 
