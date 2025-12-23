@@ -5,11 +5,13 @@ import { inject, ref, watch, type Ref } from 'vue';
 import Message from './Message.vue';
 import type Tab_t from '@/types/tab';
 import { sleep } from '@/utils/sleep';
+import { Injectables } from '@/utils/injectables';
+
 
 
 const messages = ref<Message_t[] | null | `no-messages`>(null);
 
-const active_tab = inject<Ref<Tab_t | null>>(`active_tab`)!;
+const active_tab = inject<Ref<Tab_t | null>>(Injectables.active_tab)!;
 
 watch(active_tab, async(newTab) => {
 	if (!newTab){

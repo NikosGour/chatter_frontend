@@ -6,6 +6,7 @@ import UserList from './server/UserList.vue';
 import { provide, ref } from 'vue';
 import { GetServerById } from '@/services/server';
 import type Tab_t from '@/types/tab';
+import { Injectables } from '@/utils/injectables';
 
 type Props = {
 	server_id: string
@@ -16,7 +17,7 @@ const server = ref<Server | null>(null);
 
 const active_tab = ref<Tab_t | null>(null);
 
-provide(`active_tab`, active_tab);
+provide(Injectables.active_tab, active_tab);
 
 const fetchServer = async() => {
 	const ser = await GetServerById(props.server_id);

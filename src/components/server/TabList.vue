@@ -3,6 +3,7 @@ import type Tab_t from '@/types/tab';
 import Tab from './Tab.vue';
 import { inject, ref, type Ref } from 'vue';
 import { GetTabsByServerId } from '@/services/server';
+import { Injectables } from '@/utils/injectables';
 
 type Props = {
 	server_id: string
@@ -12,7 +13,7 @@ const props = defineProps<Props>();
 
 const tabs = ref<Tab_t[] | null>(null);
 
-const active_tab = inject<Ref<Tab_t | null>>(`active_tab`)!;
+const active_tab = inject<Ref<Tab_t | null>>(Injectables.active_tab)!;
 
 
 const fetchTabs = async() => {
